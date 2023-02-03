@@ -1,0 +1,9 @@
+﻿form.form {
+    max-width: 400px;
+    max-height: 400px;
+    left:50%;
+}
+div.form-group {
+    display: flex;
+    position: center;
+}

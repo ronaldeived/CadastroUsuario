@@ -1,0 +1,11 @@
+C:\Users\rdmv\Documents\CSharp\UBS\CadastroUsuario\bin\Debug\CadastroUsuario.exe.config
+C:\Users\rdmv\Documents\CSharp\UBS\CadastroUsuario\bin\Debug\CadastroUsuario.exe
+C:\Users\rdmv\Documents\CSharp\UBS\CadastroUsuario\bin\Debug\CadastroUsuario.pdb
+C:\Users\rdmv\Documents\CSharp\UBS\CadastroUsuario\obj\Debug\CadastroUsuarioWF.csprojAssemblyReference.cache
+C:\Users\rdmv\Documents\CSharp\UBS\CadastroUsuario\obj\Debug\CadastroUsuario.Frm_Login.resources
+C:\Users\rdmv\Documents\CSharp\UBS\CadastroUsuario\obj\Debug\CadastroUsuario.ProcessoForm.resources
+C:\Users\rdmv\Documents\CSharp\UBS\CadastroUsuario\obj\Debug\CadastroUsuario.Properties.Resources.resources
+C:\Users\rdmv\Documents\CSharp\UBS\CadastroUsuario\obj\Debug\CadastroUsuarioWF.csproj.GenerateResource.cache
+C:\Users\rdmv\Documents\CSharp\UBS\CadastroUsuario\obj\Debug\CadastroUsuarioWF.csproj.CoreCompileInputs.cache
+C:\Users\rdmv\Documents\CSharp\UBS\CadastroUsuario\obj\Debug\CadastroUsuario.exe
+C:\Users\rdmv\Documents\CSharp\UBS\CadastroUsuario\obj\Debug\CadastroUsuario.pdb

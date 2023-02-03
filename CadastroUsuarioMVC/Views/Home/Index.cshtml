@@ -1,0 +1,113 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+@if (Session["NOME"] != null)
+{
+    @model IEnumerable<CadastroUsuarioModels.Processo>
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    @section navbar
+        {
+        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+        @if ((bool)Session["ID_PERFIL"])
+        {
+            @Html.ActionLink("Novo Processo", "Index", "Processo", new { area = "" }, new { @class = "navbar-brand" })
+        }
+        @Html.ActionLink("Historico", "Index", "Historico", new { area = "" }, new { @class = "navbar-brand" })
+        @Html.ActionLink("Sair", "LogOut", "Login", new { area = "" }, new { @class = "navbar-brand" })
+    }
+
+    <h3>Seja bem vindo(a), @Session["NOME"].ToString()!</h3>
+    <div>
+        @Html.ActionLink("Pesquisar especifico", "Pesquisa", "Pesquisa", new { }, new { @class = "btn btn-primary" })
+
+    </div>
+    <br>
+    <div style="OVERFLOW-Y: scroll; max-width: initial; max-height: 700px">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.Id_Processo)</th>
+                    <th>@Html.DisplayNameFor(m => m.Status.Descricao)</th>
+                    <th>@Html.DisplayNameFor(m => m.Cidade.Estado.Pais.Nome)</th>
+                    <th>@Html.DisplayNameFor(m => m.Cidade.Estado.Nome)</th>
+                    <th>@Html.DisplayNameFor(m => m.Cidade.Nome)</th>
+                    <th>@Html.DisplayNameFor(m => m.Nome)</th>
+                    <th>@Html.DisplayNameFor(m => m.Cpf)</th>
+                    <th>@Html.DisplayNameFor(m => m.Rg)</th>
+                    <th>@Html.DisplayNameFor(m => m.Nascimento)</th>
+                    <th>@Html.DisplayNameFor(m => m.Email)</th>
+                    <th>@Html.DisplayNameFor(m => m.Sexo)</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var proc in Model)
+                {
+                    <tr>
+                        <td>@proc.Id_Processo</td>
+                        <td>@proc.Status.Descricao</td>
+                        <td>@proc.Cidade.Estado.Pais.Nome</td>
+                        <td>@proc.Cidade.Estado.Nome</td>
+                        <td>@proc.Cidade.Nome</td>
+                        <td>@proc.Nome</td>
+                        <td>@proc.Cpf</td>
+                        <td>@proc.Rg</td>
+                        <td>@proc.Nascimento.ToString("dd/MM/yyyy")</td>
+                        <td>@proc.Email</td>
+                        <td>@proc.Sexo</td>
+                        @if (proc.Id_Status == 4 || proc.Id_Status == 5)
+                        {
+                            <td>
+                                @Html.ActionLink("Editar", "Editar", "EditarProcesso", new { id = proc.Id_Processo }, new { }) |
+                                @Html.ActionLink("Excluir", "Excluir", "Processo", new { id = proc.Id_Processo }, new { onclick = "return confirm('Tem certeza que quer excluir?');" })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Encaminhar", "EncaminhaGerente", "Fluxo", new { id = proc.Id_Processo }, new { onclick = "return confirm('Tem certeza que quer Encaminhar?');" }) |
+                                @Html.ActionLink("Detalhes", "Detalhes", "Processo", new { id = proc.Id_Processo }, new { })
+                            </td>
+                        }
+                        @if (proc.Id_Status == 1)
+                        {
+                            <td>
+                                @Html.ActionLink("Aprovar", "AprovarGerente", "Fluxo", new { id = proc.Id_Processo }, new { onclick = "return confirm('Tem certeza que quer Aprovar?');" }) |
+                                @Html.ActionLink("Reprovar", "Reprovar", "Fluxo", new { id = proc.Id_Processo }, new { onclick = "return confirm('Tem certeza que quer Reprovar ?');" })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Pedir Correcao", "Correcao", "Fluxo", new { id = proc.Id_Processo }, new { onclick = "return confirm('Tem certeza que quer pedir Correção?');" })
+                            </td>
+                        }
+                        @if (proc.Id_Status == 6)
+                        {
+                            <td>
+                                @Html.ActionLink("Aprovar", "AprovarControleRisco", "Fluxo", new { id = proc.Id_Processo }, new { onclick = "return confirm('Tem certeza que quer Aprovar?');" }) |
+                                @Html.ActionLink("Reprovar", "Reprovar", "Fluxo", new { id = proc.Id_Processo }, new { onclick = "return confirm('Tem certeza que quer Reprovar ?');" })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Pedir Correcao", "Correcao", "Fluxo", new { id = proc.Id_Processo }, new { onclick = "return confirm('Tem certeza que quer pedir Correção?');" })
+                            </td>
+                        }
+                        @if (proc.Id_Status == 2 || proc.Id_Status == 3)
+                        {
+                            <th></th>
+                            <th></th>
+                        }
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+}
+else
+{
+    <button class="btn btn-default">
+        @Html.ActionLink("Fazer Login", "Index", "Login")
+    </button>
+}
+

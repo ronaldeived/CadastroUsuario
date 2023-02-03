@@ -1,0 +1,66 @@
+﻿@model CadastroUsuarioModels.Processo
+
+@{
+    ViewBag.Title = "Detalhes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section navbar
+        {
+    @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    @Html.ActionLink("Novo Processo", "Index", "Processo", new { area = "" }, new { @class = "navbar-brand" })
+    @Html.ActionLink("Historico", "Index", "Historico", new { area = "" }, new { @class = "navbar-brand" })
+    @Html.ActionLink("Sair", "LogOut", "Login", new { area = "" }, new { @class = "navbar-brand" })
+}
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Processo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.Nome)</dt>
+        <dd>@Html.DisplayFor(model => model.Nome)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Cpf)</dt>
+        <dd>@Html.DisplayFor(model => model.Cpf)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Rg)</dt>
+        <dd>@Html.DisplayFor(model => model.Rg)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Nascimento)</dt>
+        <dd>@Model.Nascimento.ToString("dd/MM/yyyy")</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+        <dd>@Html.DisplayFor(model => model.Email)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Cep)</dt>
+        <dd>@Html.DisplayFor(model => model.Cep)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Rua)</dt>
+        <dd>@Html.DisplayFor(model => model.Rua)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Numero)</dt>
+        <dd>@Html.DisplayFor(model => model.Numero)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Complemento)</dt>
+        <dd>@Html.DisplayFor(model => model.Complemento)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Bairro)</dt>
+        <dd>@Html.DisplayFor(model => model.Bairro)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Celular)</dt>
+        <dd>@Html.DisplayFor(model => model.Celular)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Sexo)</dt>
+        <dd>@Html.DisplayFor(model => model.Sexo)</dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "btn btn-primary" })
+        </dt>
+        <dd>
+            @Html.ActionLink("Editar", "Editar", "EditarProcesso", new { id = Model.Id_Processo }, new { @class = "btn btn-success" })
+        </dd>
+    </dl>
+</div>
+

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CadastroUsuarioModels.Usuario_Processo>
+
+@{
+    ViewBag.Title = "Historico";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section navbar
+        {
+    @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+    @if ((bool)Session["ID_PERFIL"])
+    {
+        @Html.ActionLink("Novo Processo", "Index", "Processo", new { area = "" }, new { @class = "navbar-brand" })
+    }
+    @Html.ActionLink("Historico", "Index", "Historico", new { area = "" }, new { @class = "navbar-brand" })
+    @Html.ActionLink("Sair", "LogOut", "Login", new { area = "" }, new { @class = "navbar-brand" })
+}
+
+<h2>Histórico</h2>
+<div style="OVERFLOW-Y: scroll; max-width: initial; max-height: 500px">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Usuario.Nome)</th>
+                <th>@Html.DisplayName("Qtde Perfis")</th>
+                <th>@Html.DisplayNameFor(model => model.Id_Processo)</th>
+                <th>@Html.DisplayNameFor(model => model.Processo.Nome)</th>
+                <th>@Html.DisplayNameFor(model => model.Processo.Cpf)</th>
+                <th>@Html.DisplayNameFor(model => model.Processo.Cidade.Estado.Pais.Nome)</th>
+                <th>@Html.DisplayNameFor(model => model.Status.Descricao)</th>
+                <th>@Html.DisplayNameFor(model => model.Data_Entrada)</th>
+                <th>@Html.DisplayNameFor(model => model.Data_Saida)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var proc in Model)
+            {
+                <tr>
+                    <td>@proc.Usuario.Nome</td>
+                    <td>@proc.Usuario.Usuario_Perfis.Count</td>
+                    <td>@proc.Id_Processo</td>
+                    <td>@proc.Processo.Nome</td>
+                    <td>@proc.Processo.Cpf</td>
+                    <td>@proc.Processo.Cidade.Estado.Pais.Nome</td>
+                    <td>@proc.Status.Descricao</td>
+                    <td>@proc.Data_Entrada</td>
+                    <td>@proc.Data_Saida</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,50 @@
+﻿@model CadastroUsuarioMvc.ViewModelProcesso
+
+@{
+    ViewBag.Title = "Pesquisa";
+    WebGrid grid = new WebGrid(canPage: false, canSort: false);
+    grid.Bind(Model.Processos,
+              autoSortAndPage: false);
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section navbar
+        {
+    @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    @Html.ActionLink("Novo Processo", "Index", "Processo", new { area = "" }, new { @class = "navbar-brand" })
+    @Html.ActionLink("Historico", "Index", "Historico", new { area = "" }, new { @class = "navbar-brand" })
+    @Html.ActionLink("Sair", "LogOut", "Login", new { area = "" }, new { @class = "navbar-brand" })
+}
+
+<h2>Pesquisa</h2>
+<p></p>
+@using (Html.BeginForm())
+{
+    <form class="form-horizontal" role="form">
+        <table class="table">
+            <tr>
+                <td> Nome</td>
+                <td>@Html.TextBoxFor(model => model.Nome)</td>
+            </tr>
+            <tr>
+                <td>Cpf</td>
+                <td>@Html.TextBoxFor(model => model.Cpf)</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" id="search" title="Pesquisar" value="Pesquisar" class="btn btn-success"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div id="resultadoPesquisa">
+        @grid.GetHtml(
+        fillEmptyRows: true, alternatingRowStyle: "alternate-row", headerStyle: "grid-header", footerStyle: "grid-footer",
+        columns: new[] {
+            grid.Column("Nome"),
+            grid.Column("Cpf")
+        })
+    </div>
+}
+
